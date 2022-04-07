@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form">
+        <input type="text" id="previous" readonly />
+        <input type="text" id="display" />
+        <div id="storedNumber"></div>
+        <div class="buttons">
+          <button class="button clearOne" onclick="del()">CE</button>
+          <button class="button clear" onclick="ac()">AC</button>
+          <button class="button operator">%</button>
+          <button class="button operator" onclick="display('/')">/</button>
+          <button class="button number" onclick="display('7')">7</button>
+          <button class="button number" onclick="display('8')">8</button>
+          <button class="button number" onclick="display('9')">9</button>
+          <button class="button operator" onclick="display('*')">*</button>
+          <button class="button number" onclick="display('4')">4</button>
+          <button class="button number" onclick="display('5')">5</button>
+          <button class="button number" onclick="display('6')">6</button>
+          <button class="button operator" onclick="display('-')">-</button>
+          <button class="button number" onclick="display('1')">1</button>
+          <button class="button number" onclick="display('2')">2</button>
+          <button class="button number" onclick="display('3')">3</button>
+          <button class="button operator" onclick="display('+')">+</button>
+          <button class="button undo">←</button>
+          <button class="button number" onclick="display('0')">0</button>
+          <button class="button number dot">.</button>
+          <button class="button equals" onclick="equal()">=</button>
+        </div>
+      </div>
+    </div>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: url("./cute.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: 400px;
+        height: 600px;
+        background-color: rgba(87, 80, 80, 0.234);
+        box-shadow: 2px 5px 4px rgba(162, 145, 145, 0.227);
+        backdrop-filter: blur(5px);
+        border-radius: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 12px;
+        margin: 35px auto;
+      }
+
+      .form input[type="text"]:nth-child(1) {
+        background: transparent;
+        position: absolute;
+        border: none;
+        width: 94%;
+        height: 45px;
+        padding: 10px;
+        outline-style: none;
+        text-align: right;
+        font-size: 15px;
+        overflow: hidden;
+        color: grey;
+      }
+      .form input[type="text"]:nth-child(2) {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 100%;
+        padding: 10px;
+        height: 100px;
+        outline-style: none;
+        text-align: right;
+        font-size: 25px;
+      }
+      .form
+        input[type="text"]:focus
+        ::selection
+        ::placeholder
+        :active
+        :focus-visible {
+        background: transparent;
+        border: none;
+      }
+      .buttons {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      }
+      .button {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 6px;
+        border-radius: 50px;
+        border: none;
+        background-color: rgba(243, 238, 238, 0.945);
+        backdrop-filter: blur(2px);
+        box-shadow: 3px 10px 4px rgba(162, 145, 145, 0.434);
+        transition: 0.3s ease-in-out;
+        font-size: larger;
+        font-weight: 600;
+      }
+
+      .button:hover {
+        box-shadow: none;
+        transform: scale(1.1);
+      }
+      .button:nth-child(1) {
+        color: pink;
+      }
+      .button:nth-child(2) {
+        color: rgb(93, 33, 136);
+      }
+      .button:nth-child(3) {
+        background-color: rgba(14, 14, 159, 0.547);
+        color: whitesmoke;
+      }
+      .button:nth-child(4) {
+        background-color: rgb(133, 10, 106);
+        color: whitesmoke;
+      }
+
+      .button:nth-child(8) {
+        background-color: rgb(128, 187, 69);
+        color: whitesmoke;
+      }
+      .button:nth-child(12) {
+        background-color: tomato;
+        color: whitesmoke;
+      }
+      .button:nth-child(16) {
+        background-color: brown;
+        color: whitesmoke;
+      }
+      .button:nth-child(17) {
+        font-weight: bolder;
+        font-size: 2.1em;
+        color: rgb(188, 40, 65);
+      }
+      .button:nth-child(20) {
+        background-color: cadetblue;
+        color: whitesmoke;
+      }
+
+      #storedNumber {
+        display: none;
+      }
+    </style>
+    <script src="./calculator.js"></script>
+  </body>
+</html>
